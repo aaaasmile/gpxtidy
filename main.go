@@ -15,6 +15,7 @@ func main() {
 	var source = flag.String("source", "", "Source gpx file")
 	var target = flag.String("target", "", `Destination gpx`)
 	var cmd = flag.String("cmd", "", `Commands available: remext`)
+	var abstrg = flag.Bool("abstrg", false, "Absolute target path. If true a full path is used. If false the dir flag is used")
 	var ver = flag.Bool("ver", false, "Program version")
 	flag.Parse()
 	if *ver {
@@ -31,6 +32,7 @@ func main() {
 
 	start := time.Now()
 	c := gpx.NewCommander(*cmd, *dir, *source, *target)
+	c.AbsTraget = *abstrg
 	if err := c.Run(); err != nil {
 		log.Fatalln("Something went wrong: ", err)
 	}
