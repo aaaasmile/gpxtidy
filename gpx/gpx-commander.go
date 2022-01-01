@@ -11,14 +11,15 @@ import (
 )
 
 type Commander struct {
-	Dir        string
-	SourcePath string
-	TargetPath string
-	Cmd        string
-	AbsTraget  bool
-	sourcePts  []TrkPt
-	gpxTime    string
-	trackName  string
+	Dir          string
+	SourcePath   string
+	TargetPath   string
+	Cmd          string
+	AbsTraget    bool
+	ReduceFactor int
+	sourcePts    []TrkPt
+	gpxTime      string
+	trackName    string
 }
 
 func NewCommander(cmd, dir, source, target string) *Commander {
@@ -71,7 +72,14 @@ func (c *Commander) parseSource() error {
 	}
 
 	c.sourcePts = make([]TrkPt, 0)
-	c.sourcePts = append(c.sourcePts, dt.Trk.TrkSeg.TrkPts...)
+	if c.ReduceFactor == 1 {
+		c.sourcePts = append(c.sourcePts, dt.Trk.TrkSeg.TrkPts...)
+	} else {
+		for i := 1; i < len(dt.Trk.TrkSeg.TrkPts); i += c.ReduceFactor {
+			c.sourcePts = append(c.sourcePts, dt.Trk.TrkSeg.TrkPts[i])
+		}
+		log.Printf("Track reduced from %d to %d points.", len(dt.Trk.TrkSeg.TrkPts), len(c.sourcePts))
+	}
 	c.trackName = dt.Trk.Name
 	c.gpxTime = dt.Metadata.Time
 

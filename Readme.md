@@ -10,12 +10,14 @@ Simply does nothing. I suspect the Metadata  section or the extenstion section a
 To make the import working I have used a gpx section from a TomTom activity export (see .\data\reference_tomtom_export.gpx) 
 and merged with all points from the Garmin File S1_12Ipertrail_2022-v221227.GPX into a new file (see .\data\redux_S1.gpx). 
 The result is the file redux_S1.gpx and is imported in TomTom without any errors.
+But at the end it seems that the problem is the filename extension. It should be .gpx instead of .GPX.
+
 
 ## Usage
 Checkout this repository and build the project with golang (version used is 1.16.4)
 
     go build
 
-Execute
+Execute in powershell
 
-    gpxtidy -cmd remext -dir .\data -source S1_12Ipertrail_2022-v221227.GPX  -target redux_S1.gpx
+    .\gpxtidy.exe -cmd remext -redfactor 2  -dir .\data -source S1_12Ipertrail_2022-v221227.GPX  -target redux_S1.gpx
