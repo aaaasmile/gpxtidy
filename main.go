@@ -25,7 +25,7 @@ func main() {
 	if *dir == "" || *source == "" || *target == "" || *cmd == "" {
 		fmt.Println(`Process gpx file for removing parts.
 		For example use something like this:
-		gpx -cmd remext -dir .\data -source S1_12Ipertrail_2022-v221227.GPX  -target noext_S1_20211227_iper.gpx`)
+		gpxtidy -cmd remext -dir .\data -source S1_12Ipertrail_2022-v221227.GPX  -target noext_S1_20211227_iper.gpx`)
 		return
 	}
 
