@@ -99,7 +99,7 @@ func (c *Commander) writeTarget() error {
 	}{
 		GpxTime:   c.gpxTime,
 		Trackname: c.trackName,
-		TrkPts:    c.sourcePts[0:2],
+		TrkPts:    c.sourcePts,
 	}
 
 	templFileName := "templates/track.gpx_templ"

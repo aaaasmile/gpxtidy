@@ -2,8 +2,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gpx version="1.1" creator="TomTom.0 with Barometer" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata>
-    <name>GpxTidy</name>
-    <time>{{.GpxTime}}</name>
+    <name>{{.Trackname}}</name>
   </metadata>
   <trk>
     <name>{{.Trackname}}</name>
